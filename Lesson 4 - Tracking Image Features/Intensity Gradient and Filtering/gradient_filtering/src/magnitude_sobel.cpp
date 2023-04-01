@@ -24,7 +24,7 @@ void magnitudeSobel()
     float sobel_x[9] = { -1, 0, 1, -2, 0, 2, -1, 0, 1};
     cv::Mat kernel_x = cv::Mat(3,3,CV_32F, sobel_x);
 
-    float sobel_y[9] = { -1, 0, 1, -2, 0, 2, -1, 0, 1};
+    float sobel_y[9] = { -1, -2, -1, 0, 0, 0, 1, 2, 1};
     cv::Mat kernel_y = cv::Mat(3,3,CV_32F, sobel_y);
 
     // apply filter
@@ -43,10 +43,10 @@ void magnitudeSobel()
     }
 
     // show result
-    string windowName = "Gaussian Blurring";
+    string windowName = "Magnitude Sobel";
     cv::namedWindow(windowName, 1); // create window
+        cv::imshow("Original", img);
     cv::imshow(windowName, magnitude);
-    cv::imshow("Original", img);
     cv::waitKey(0); // wait for keyboard input before continuing
 }
 
