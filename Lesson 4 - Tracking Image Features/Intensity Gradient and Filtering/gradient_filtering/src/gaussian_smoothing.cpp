@@ -19,17 +19,35 @@ void gaussianSmoothing1()
                             4, 16, 26, 16, 4,
                             1, 4, 7, 4, 1};
     cv::Mat kernel = cv::Mat(5, 5, CV_32F, gauss_data);
-  
-  	// TODO: Divide each element of the kernel by the sum of all the values in the kernel.
+
+  	// Divide each element of the kernel by the sum of all the values in the kernel.
+    float kernel_sum = 0;
+    for(int i = 0; i < 25; i++)
+    {
+      kernel_sum += gauss_data[i];
+    }
+
+    for(int i = 0; i < 25; i++)
+    {
+      gauss_data[i] /= kernel_sum;
+    }
+
+    kernel = cv::Mat(5, 5, CV_32F, gauss_data);
 
     // apply filter
     cv::Mat result;
     cv::filter2D(img, result, -1, kernel, cv::Point(-1, -1), 0, cv::BORDER_DEFAULT);
 
+    // check result against the library function
+    cv::Mat gaussianFilterResult;
+    cv::GaussianBlur(img,gaussianFilterResult ,cv::Point(5,5),0,0,2);
+
     // show result
     string windowName = "Gaussian Blurring";
     cv::namedWindow(windowName, 1); // create window
     cv::imshow(windowName, result);
+    // cv::imshow("Gauss", gaussianFilterResult);
+    cv::imshow("Original", img);
     cv::waitKey(0); // wait for keyboard input before continuing
 }
 
