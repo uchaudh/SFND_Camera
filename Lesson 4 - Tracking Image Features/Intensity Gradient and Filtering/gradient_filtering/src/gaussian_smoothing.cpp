@@ -40,7 +40,7 @@ void gaussianSmoothing1()
 
     // check result against the library function
     cv::Mat gaussianFilterResult;
-    cv::GaussianBlur(img,gaussianFilterResult ,cv::Point(5,5),0,0,2);
+    cv::GaussianBlur(img,gaussianFilterResult ,cv::Size(5,5),2.0);
 
     // show result
     string windowName = "Gaussian Blurring";
