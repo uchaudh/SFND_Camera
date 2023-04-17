@@ -29,7 +29,7 @@ void gradientSobel()
     cv::Mat kernel_x = cv::Mat(3, 3, CV_32F, sobel_x);
 
     //  Step 4 - apply filter
-    cv::Mat result_x;
+    cv::Mat result_x, result_y;
     cv::filter2D(imgGray, result_x, -1, kernel_x, cv::Point(-1, -1), 0, cv::BORDER_DEFAULT);
 
     //  Step 5 - show result
