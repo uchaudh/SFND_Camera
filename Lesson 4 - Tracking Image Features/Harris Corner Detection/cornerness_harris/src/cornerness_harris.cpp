@@ -27,11 +27,6 @@ void cornernessHarris()
     cv::normalize(dst, dst_norm, 0, 255, cv::NORM_MINMAX, CV_32FC1, cv::Mat());
     cv::convertScaleAbs(dst_norm, dst_norm_scaled);
 
-    // TODO: Your task is to locate local maxima in the Harris response matrix 
-    // and perform a non-maximum suppression (NMS) in a local neighborhood around 
-    // each maximum. The resulting coordinates shall be stored in a list of keypoints 
-    // of the type `vector<cv::KeyPoint>`.
-    
     vector<cv::KeyPoint> keypoints;
     double max_overlap = 0.0;
     // getting local maxima
