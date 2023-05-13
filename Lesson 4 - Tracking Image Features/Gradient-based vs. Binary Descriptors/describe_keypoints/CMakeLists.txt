@@ -10,9 +10,9 @@ project(camera_fusion)
 find_package(OpenCV 4.1 REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
-link_directories(${OpenCV_LIBRARY_DIRS})
-add_definitions(${OpenCV_DEFINITIONS})
+#link_directories(${OpenCV_LIBRARY_DIRS})
+#add_definitions(${OpenCV_DEFINITIONS})
 
 # Executables for exercise
 add_executable (describe_keypoints src/describe_keypoints.cpp)
-target_link_libraries (describe_keypoints ${OpenCV_LIBRARIES})
+target_link_libraries (describe_keypoints ${OpenCV_LIBS})
